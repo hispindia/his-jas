@@ -1,0 +1,7 @@
+
+
+18/04/2011
+-Update some problems with ajax when receipt or indent
+15/04/2011
+-Update print for indent between main-store and sub-store
+-Fix VAT not accept with float value

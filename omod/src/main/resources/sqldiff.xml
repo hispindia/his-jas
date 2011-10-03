@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqldiff PUBLIC "-//OpenMRS//DTD OpenMRS SQL Diff Config 1.0//EN" "http://resources.openmrs.org/doctype/sqldiff-1.0.dtd">
+
+<sqldiff version="1.0">
+	<help>
+		USE:
+			The diffs are ordered by datamodel version number.
+			The script can be run in a top down fashion and is
+			expected to not failor overwrite old data
+		
+		EXPECT:
+			- "use business-database-name;" was called prior to
+			   calling this script
+	</help>
+	<diff>
+		<version>0.1</version>
+		<author>Chuyen Nguyen</author>
+		<date>April 20rd 2011</date>
+		<description>
+			Create jas tables
+		</description>
+		<sql>
+			CREATE TABLE IF NOT EXISTS jas_store (id integer not null auto_increment, name varchar(255), created_on datetime, created_by varchar(255), role varchar(255), retired bit, code varchar(255), is_drug integer, parent_id integer, primary key (id));
+			CREATE TABLE IF NOT EXISTS jas_drug (id integer not null auto_increment, name varchar(255), unit_id integer, category_id integer, drug_id integer, attribute integer, consumption integer, created_on datetime, created_by varchar(255), primary key (id));
+			CREATE TABLE IF NOT EXISTS jas_drug_category (id integer not null auto_increment, name varchar(255), description varchar(500), created_on datetime, created_by varchar(255), primary key (id));
+			CREATE TABLE IF NOT EXISTS jas_drug_formulation (id integer not null auto_increment, name varchar(255), dozage varchar(255), description varchar(500), created_on datetime, created_by varchar(255), primary key (id));
+			CREATE TABLE IF NOT EXISTS jas_drug_formulations (drug_id integer not null, formulation_id integer not null, primary key (drug_id, formulation_id));
+			CREATE TABLE IF NOT EXISTS jas_drug_unit (id integer not null auto_increment, name varchar(255), description varchar(500), created_on datetime, created_by varchar(255), primary key (id));
+			CREATE TABLE IF NOT EXISTS jas_store_drug_issue (id integer not null auto_increment, store_id integer, patient_id integer, name varchar(255), prescription varchar(255), identifier varchar(255), created_by varchar(255), created_on datetime, primary key (id));
+			CREATE TABLE IF NOT EXISTS jas_store_drug_issue_detail (id integer not null auto_increment, store_drug_issue_id integer, transaction_detail_id integer, quantity integer, primary key (id));
+			CREATE TABLE IF NOT EXISTS jas_store_drug_transaction (id integer not null auto_increment, store_id integer, type_transaction integer, status integer, description varchar(500), created_on datetime, created_by varchar(255), primary key (id));
+			CREATE TABLE IF NOT EXISTS jas_store_drug_transaction_detail (id integer not null auto_increment, transaction_id integer, drug_id integer, formulation_id integer, quantity integer, current_quantity integer, issue_quantity integer, unit_price decimal(19,2), VAT decimal(19,2), total_price decimal(19,2), batch_no varchar(255), company_name varchar(255), date_manufacture datetime, date_expiry datetime, receipt_date datetime, created_on datetime, opening_balance bigint, closing_balance bigint, parent_id integer, primary key (id));
+			
+		</sql>
+	</diff>
+	
+	<diff>
+		<version>0.2</version>
+		<author>Chuyen Nguyen</author>
+		<date>June 2rd 2011</date>
+		<description>
+			Add column total price to jas_store_drug_issue tables
+		</description>
+		<sql>
+			ALTER TABLE jas_store_drug_issue ADD total decimal(19,2);
+		</sql>
+	</diff>
+	<diff>
+		<version>0.3</version>
+		<author>Chuyen Nguyen</author>
+		<date>June 27rd 2011</date>
+		<description>
+			Add column other_taxes to jas_store_drug_transaction_detail table
+		</description>
+		<sql>
+			ALTER TABLE jas_store_drug_transaction_detail ADD other_taxes decimal(19,2) DEFAULT '0.00';
+		</sql>
+	</diff>
+	<diff>
+		<version>0.4</version>
+		<author>Chuyen Nguyen</author>
+		<date>July 06rd 2011</date>
+		<description>
+			Add column bill_number to jas_store_drug_issue table
+		</description>
+		<sql>
+			ALTER TABLE jas_store_drug_issue ADD bill_number varchar(255) DEFAULT '';
+		</sql>
+	</diff>
+	
+</sqldiff>
