@@ -1,15 +1,23 @@
 /**
- * <p> File: org.openmrs.module.jas.util.EnglishNumber.java </p>
- * <p> Project: jas-api </p>
- * <p> Copyright (c) 2011 HISP Technologies. </p>
- * <p> All rights reserved. </p>
- * <p> Author: Nguyen manh chuyen </p>
- * <p> Email: chuyennmth@gmail.com</p>
- * <p> Update by: Nguyen manh chuyen </p>
- * <p> Version: $1.0 </p>
- * <p> Create date: Jun 16, 2011 12:48:35 PM </p>
- * <p> Update date: Jun 16, 2011 12:48:35 PM </p>
+ *  Copyright 2011 Health Information Systems Project of India
+ *
+ *  This file is part of Jas module.
+ *
+ *  Jas module is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+
+ *  Jas module is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with Jas module.  If not, see <http://www.gnu.org/licenses/>.
+ *
  **/
+
 
 package org.openmrs.module.jas.util;
 
