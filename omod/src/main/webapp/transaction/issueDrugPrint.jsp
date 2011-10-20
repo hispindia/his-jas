@@ -1,3 +1,22 @@
+ <%--
+ *  Copyright 2009 Society for Health Information Systems Programmes, India (HISP India)
+ *
+ *  This file is part of JAS module.
+ *
+ *  JAS module is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+
+ *  JAS module is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with JAS module.  If not, see <http://www.gnu.org/licenses/>.
+ *
+--%> 
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="/WEB-INF/template/headerMinimal.jsp" %>
 <%@ include file="../includes/js_css.jsp" %>
@@ -9,18 +28,17 @@
 
 <center style="font-size: 1.8em;">
 <b>JAN AUSHIDHI MEDICINE SHOP
-<br/>(Rogi Kalyan Samiti RH Solan -Undertaking
-<br/>Registered Office-Regional Hospital Solan)
+<br/>(Rogi Kalyan Samiti DDUZH-Undertaking
+<br/>Registered Office-DDUZH Shimla)
 </b>
 </center>
-<br/>
 <table width="100%" style="font-size: 1.2em;">
 <tr >
-	<td align="left" ><b>CST  - 020020100511</b></td><td align="right" ><b>DL - SLN/DRUGS/21/11-04</b></td>
+	<td align="left" >CST  - 020 104  00372</td><td align="right" >DL - SML/2011/768 </td>
 </tr>
 <tr>
 	<td colspan="2">Medicine Shop : JAN Aushidhi Medicine Shop
-					<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regional  Hospital Solan
+					<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DDU Zonal Hospital Shimla
 	</td>
 </tr>
 <tr>
@@ -29,16 +47,16 @@
 	</td><td align="right">Bill No: ${issueDrugIssue.billNumber }</td>
 </tr>
 <tr>
-	<td align="left">Prescribed by : MO (by Default)</td><td align="right">Date: <openmrs:formatDate date="${issueDrugIssue.createdOn}" type="textbox"/></td>
+	<td align="left">Prescribed by : MO  </td><td align="right">Date: <openmrs:formatDate date="${issueDrugIssue.createdOn}" type="textbox"/></td>
 </tr>
 <tr>
 	
 </tr>
 </table>
+<br/>
 <center style="font-size: 1.8em;">
 <b>CASH MEMO</b>
-</center>	
-<br/>                                              
+</center>	                                              
 <table border="1" >
 	<tr align="center">
 	<th>Particulars</th>
@@ -98,12 +116,12 @@
 <br/><b >RETURN</b>  against the Bill would be entertained till <b >45 DAYS</b> from the <b >BILL DATE</b> 
 </div>
 <br/>
+
+
 <br/><br/>
-<span style="float:left;font-size: 1.2em"><b>E. & O. E</b></span><span style="float:right;font-size: 1.2em"><b>Registered Pharmacist&nbsp;&nbsp;&nbsp;&nbsp;</b> </span>
+<span style="float:left;font-size: 1.2em"><b>E. & O. E</b></span><span style="float:right;font-size: 1.2em">FOR -<b>Jan Aushidhi Medicine Shop</b> </span>
 <br/>
-<span style="margin-left: 44em;font-size: 1.2em">Jan Aushidhi Medicine Shop</span>
-<br/>
-<span style="margin-left: 45em;font-size: 1.2em">Regional Hospital Solan</span>
+<span style="margin-left: 48em;font-size: 1.2em">DDUZ</span>
 </div>
 </div>
 <!-- END PRINT DIV -->     
