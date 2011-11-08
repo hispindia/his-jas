@@ -48,7 +48,7 @@
 	</td><td align="right">Bill No: ${issueDrugIssue.billNumber }</td>
 </tr>
 <tr>
-	<td align="left">Prescribed by : MO (by Default)</td><td align="right">Date: <openmrs:formatDate date="${issueDrugIssue.createdOn}" type="textbox"/></td>
+	<td align="left">Prescribed by : MO</td><td align="right">Date: <openmrs:formatDate date="${issueDrugIssue.createdOn}" type="textbox"/></td>
 </tr>
 <tr>
 	
