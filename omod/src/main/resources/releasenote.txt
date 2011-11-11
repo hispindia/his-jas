@@ -1,4 +1,6 @@
-
+1.4.1-SNAPSHOT
+- updated issue drug print for Solan
+- fixed bug checking session
 
 18/04/2011
 -Update some problems with ajax when receipt or indent
