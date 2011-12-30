@@ -66,7 +66,11 @@
 		<td>${issue.billNumber}</td>
         <td>${issue.total}</td>
 		<td><openmrs:formatDate date="${issue.createdOn}" type="textbox"/></td>
-		<td><a href="#" title="Detail issue" onclick="ISSUE.detailIssueDrug('${issue.id}');">Detail</a>|<a href="#" title="Print issue" onclick="ISSUE.printIssueDrug('${issue.id}');">Print</a></td>
+		<td>
+			<a href="#" title="Detail issue" onclick="ISSUE.detailIssueDrug('${issue.id}');">Detail</a>|
+			<a href="#" title="Print issue" onclick="ISSUE.printIssueDrug('${issue.id}');">Print</a>|
+			<a href="#" title="Edit issue" onclick="ISSUE.editBill('${issue.id}');">Edit bill</a>
+		</td>
 		</tr>
 	</c:forEach>
 	</c:when>

@@ -75,7 +75,6 @@
 		
 		<c:forEach items="${listDrugIssue}" var="issue" varStatus="varStatus">
 		<c:set var = "vTotal"   value = "${vTotal + issue.totalPriceExt}" />
-		<c:if test ="${issue.totalPriceExt > 0 }">
 		<tr align="center" class='${varStatus.index % 2 == 0 ? "oddRow" : "evenRow" } '>
 			<td>${issue.transactionDetail.drug.name}</td>
 			<td>${issue.transactionDetail.formulation.name}</td>
@@ -87,7 +86,7 @@
 			<td>${issue.transactionDetail.VAT}</td>
 			<td>${issue.totalPriceExt}</td>
 			</tr>
-		</c:if>	
+			
 		</c:forEach>
 			<tr >
 				<td align="right" colspan="8">

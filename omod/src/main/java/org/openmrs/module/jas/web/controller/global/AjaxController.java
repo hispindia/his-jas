@@ -185,7 +185,7 @@ public class AjaxController {
 			if(issueDrug != null && list != null && list.size() > 0){
 				
 				Date date = new Date();
-				//create transaction issue from substore
+				//create transaction receipt drug
 				 JASStoreDrugTransaction transaction = new JASStoreDrugTransaction();
 				 transaction.setDescription("ISSUE DRUG "+DateUtils.getDDMMYYYY());
 				 transaction.setStore(store);
@@ -199,7 +199,6 @@ public class AjaxController {
 				//issueDrug = jASService.saveStoreDrugIssue(issueDrug);
 				BigDecimal total = new BigDecimal(0);
 				for(JASStoreDrugIssueDetail pDetail : list){
-					Date date1 = new Date();
 					try {
 						Thread.sleep(2000);
 					} catch (InterruptedException e) {
@@ -230,7 +229,7 @@ public class AjaxController {
 					transDetail.setDateManufacture(pDetail.getTransactionDetail().getDateManufacture());
 					transDetail.setDateExpiry(pDetail.getTransactionDetail().getDateExpiry());
 					transDetail.setReceiptDate(pDetail.getTransactionDetail().getReceiptDate());
-					transDetail.setCreatedOn(date1);
+					transDetail.setCreatedOn(date);
 					transDetail.setOtherTaxes(pDetail.getTransactionDetail().getOtherTaxes());
 					
 					//BigDecimal moneyUnitPrice = pDetail.getTransactionDetail().getUnitPrice().multiply(new BigDecimal(pDetail.getQuantity()));
@@ -243,6 +242,7 @@ public class AjaxController {
 					
 					pDetail.setStoreDrugIssue(issueDrug);
 					pDetail.setTransactionDetail(transDetail);
+					pDetail.setCreatedOn(date);
 					//save issue to patient detail
 					jASService.saveStoreDrugIssueDetail(pDetail);
 					//save issues transaction detail

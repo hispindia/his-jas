@@ -33,7 +33,8 @@ import java.util.HashMap;
  * <p> Update date: Dec 28, 2010 10:11:47 PM </p>
  **/
 public class StoreSingleton {
-	private static StoreSingleton instance = null;
+		private static StoreSingleton instance = null;
+		private boolean edit;
 	   public static final StoreSingleton getInstance(){
 		   if (instance == null) {
 		         instance = new StoreSingleton();
@@ -46,4 +47,12 @@ public class StoreSingleton {
 				hash = new HashMap<String, Object>();
 			return hash;
 		}
+		public boolean isEdit() {
+			return edit;
+		}
+		public void setEdit(boolean edit) {
+			this.edit = edit;
+		}
+	   
+	   
 }

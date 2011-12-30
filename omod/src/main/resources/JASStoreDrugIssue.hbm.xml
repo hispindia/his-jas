@@ -18,7 +18,8 @@
 		<property name="identifier" column="identifier"  />
 		<property name="createdBy" column="created_by"  />
 		<property name="createdOn" column="created_on"  />
-		<property name="total" column="total"  />	
-		<property name="billNumber" column="bill_number"  />	
+		<property name="total" column="total"  />
+		<property name="billNumber" column="bill_number"  />
+		<property name="updateTimes" column="update_times"  />	
 	</class>
 </hibernate-mapping>

@@ -39,6 +39,8 @@ public class JASStoreDrugIssue implements  Serializable {
 	 private String identifier;
 	 private String billNumber;
 	 private BigDecimal total;
+	 private BigDecimal newTotal;
+	 private int updateTimes;
 	public Integer getId() {
 		return id;
 	}
@@ -101,6 +103,19 @@ public class JASStoreDrugIssue implements  Serializable {
 	}
 	public void setBillNumber(String billNumber) {
 		this.billNumber = billNumber;
+	}
+		
+	public int getUpdateTimes() {
+		return updateTimes;
+	}
+	public void setUpdateTimes(int updateTimes) {
+		this.updateTimes = updateTimes;
+	}
+	public BigDecimal getNewTotal() {
+		return newTotal;
+	}
+	public void setNewTotal(BigDecimal newTotal) {
+		this.newTotal = newTotal;
 	}
 	 
 	 

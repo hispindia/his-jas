@@ -22,18 +22,22 @@ package org.openmrs.module.jas.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class JASStoreDrugIssueDetail implements  Serializable {
 		 private static final long serialVersionUID = 1L;
 		 private Integer id;
 		 private JASStoreDrugIssue storeDrugIssue;
 		 private Integer quantity;
+		 private Integer returnQuantity = 0;
+		 private Integer tempReturnQuantity = 0;
 		 private JASStoreDrugTransactionDetail transactionDetail;
 		 private BigDecimal unitPrice;
 		 private BigDecimal totalPrice;
 		 private BigDecimal rate;
 		 private BigDecimal VAT;
 		 private BigDecimal otherTaxes = new BigDecimal(0);
+		 private Date createdOn;
 		 
 		public Integer getId() {
 			return id;
@@ -72,6 +76,11 @@ public class JASStoreDrugIssueDetail implements  Serializable {
 			totalPrice = totalPrice.setScale(2, BigDecimal.ROUND_UP);
 			return totalPrice;
 		}
+		public BigDecimal getTotalPriceExt() {
+			BigDecimal tot = transactionDetail.getRate().multiply(new BigDecimal(quantity - returnQuantity));
+			tot = tot.setScale(2, BigDecimal.ROUND_UP);
+			return tot;
+		}
 		public void setTotalPrice(BigDecimal totalPrice) {
 			this.totalPrice = totalPrice;
 		}
@@ -94,6 +103,30 @@ public class JASStoreDrugIssueDetail implements  Serializable {
 		}
 		public void setOtherTaxes(BigDecimal otherTaxes) {
 			this.otherTaxes = otherTaxes;
+		}
+		public Integer getReturnQuantity() {
+			return returnQuantity;
+		}
+		public void setReturnQuantity(Integer returnQuantity) {
+			this.returnQuantity = returnQuantity;
+		}
+		public Integer getCurrentQuantity(){
+			return quantity - returnQuantity;
+		}
+		public Integer getTempCurrentQuantity(){
+			return quantity - returnQuantity - tempReturnQuantity;
+		}
+		public Integer getTempReturnQuantity() {
+			return tempReturnQuantity;
+		}
+		public void setTempReturnQuantity(Integer tempReturnQuantity) {
+			this.tempReturnQuantity = tempReturnQuantity;
+		}
+		public Date getCreatedOn() {
+			return createdOn;
+		}
+		public void setCreatedOn(Date createdOn) {
+			this.createdOn = createdOn;
 		}
 		
 		/* public static void main(String[] argv) throws Exception {

@@ -41,10 +41,10 @@
 		<td>${detail.transactionDetail.drug.name} </td>	
 		<td>${detail.transactionDetail.formulation.name}-${detail.transactionDetail.formulation.dozage}</td>
 		<td><openmrs:formatDate date="${detail.transactionDetail.dateExpiry}" type="textbox"/></td>
-		<td>${detail.quantity }</td>
+		<td>${detail.quantity - detail.returnQuantity }</td>
 		<td>${detail.transactionDetail.rate }</td>
 		<td>${detail.transactionDetail.VAT}</td>
-		<td>${detail.transactionDetail.totalPrice}</td>
+		<td>${detail.totalPriceExt}</td>
 		</tr>
 	</c:forEach>
 	</c:when>

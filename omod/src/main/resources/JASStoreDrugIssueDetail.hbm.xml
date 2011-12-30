@@ -14,5 +14,7 @@
 	    <many-to-one name="transactionDetail" class="org.openmrs.module.jas.model.JASStoreDrugTransactionDetail"
 	        column="transaction_detail_id" cascade="none"  />
 		<property name="quantity" column="quantity"  />
+		<property name="returnQuantity" column="return_quantity"  />
+		<property name="createdOn" column="created_on"  />
 	</class>
 </hibernate-mapping>

@@ -27,22 +27,18 @@
 <div style="width: 850px; font-size: 1.0em;font-family:'Dot Matrix Normal',Arial,Helvetica,sans-serif;">
 
 <center style="font-size: 1.8em;">
-<b>JAN AUSHIDHI STORE
-<br/>Rogi Kalyan Samiti, Regional Hospital Solan
+<b>JAN AUSHIDHI MEDICINE SHOP
+<br/>(Rogi Kalyan Samiti DDUZH-Undertaking
+<br/>Registered Office-DDUZH Shimla)
 </b>
 </center>
-<br/>
 <table width="100%" style="font-size: 1.2em;">
 <tr >
-	<td align="left" ><b>CST  - 020020100511</b></td>
-	<td align="right" >
-		<b>DL - SLN/DRUGS/21/11-04</b><br/>
-		<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SLN/DRUGS/21/11-03</b><br/>
-	</td>
+	<td align="left" >CST  - 020 104  00372</td><td align="right" >DL - SML/2011/768 </td>
 </tr>
 <tr>
-	<td colspan="2">Medicine Shop : Jan Aushidhi Store,
-					<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regional  Hospital Solan
+	<td colspan="2">Medicine Shop : JAN Aushidhi Medicine Shop
+					<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DDU Zonal Hospital Shimla
 	</td>
 </tr>
 <tr>
@@ -51,16 +47,16 @@
 	</td><td align="right">Bill No: ${issueDrugIssue.billNumber }</td>
 </tr>
 <tr>
-	<td align="left">Prescribed by : MO; RH, Solan</td><td align="right">Date: <openmrs:formatDate date="${issueDrugIssue.createdOn}" type="textbox"/></td>
+	<td align="left">Prescribed by : MO  </td><td align="right">Date: <openmrs:formatDate date="${issueDrugIssue.createdOn}" type="textbox"/></td>
 </tr>
 <tr>
 	
 </tr>
 </table>
+<br/>
 <center style="font-size: 1.8em;">
 <b>CASH MEMO</b>
-</center>	
-<br/>                                              
+</center>	                                              
 <table border="1" >
 	<tr align="center">
 	<th>Particulars</th>
@@ -71,26 +67,27 @@
 	<th>Quantity</th>
 	<th>MRP/Rate</th>
 	<th>VAT</th>
-	<th>Amount in <img src="${pageContext.request.contextPath}/moduleResources/jas/indian-rupee.jpg" height="14" width="14"/></th>
+	<th>Amount</th>
 	</tr>
 	<c:set var = "vTotal"   value = "0" />
 	<c:choose>
 	<c:when test="${not empty listDrugIssue}">
 		
 		<c:forEach items="${listDrugIssue}" var="issue" varStatus="varStatus">
-		<c:set var = "vTotal"   value = "${vTotal + issue.transactionDetail.totalPrice}" />
+		<c:set var = "vTotal"   value = "${vTotal + issue.totalPriceExt}" />
+		<c:if test ="${issue.totalPriceExt > 0 }">
 		<tr align="center" class='${varStatus.index % 2 == 0 ? "oddRow" : "evenRow" } '>
 			<td>${issue.transactionDetail.drug.name}</td>
 			<td>${issue.transactionDetail.formulation.name}</td>
 			<td>${issue.transactionDetail.formulation.dozage}</td>
 			<td>${issue.transactionDetail.batchNo}</td>
 			<td><openmrs:formatDate date="${issue.transactionDetail.dateExpiry}" type="textbox"/></td>
-			<td>${issue.quantity}</td>
+			<td>${issue.quantity - issue.returnQuantity}</td>
 			<td>${issue.transactionDetail.rate }</td>
 			<td>${issue.transactionDetail.VAT}</td>
-			<td>${issue.transactionDetail.totalPrice}</td>
+			<td>${issue.totalPriceExt}</td>
 			</tr>
-			
+		</c:if>	
 		</c:forEach>
 			<tr >
 				<td align="right" colspan="8">
@@ -106,8 +103,7 @@
 </table>
 <br/>
 <div style=" font-size: 1.3em;">
-
-<nobr><img src="${pageContext.request.contextPath}/moduleResources/jas/indian-rupee.jpg" height="14" width="14"/> : <span id="money"></span></nobr>
+<nobr>Rs : <span id="money"></span></nobr>
 </div>
 <div style=" font-size: 1.0em;">
 <br/>
@@ -116,14 +112,17 @@
 <br/>
 <br/>Please show the Medicine to Your doctor before use
 <br/>Error in the Price Charged or in Calculation, kindly bring the cash memo for correction
+<br/>Please bring <b >Original Bill</b> at the time of return, else <b >No Return will be Entertained without the Original bill</b>
+<br/>Mention your <b >Name/Phone/ Address</b> on <b >Original Bill</b> at the Time of <b >RETURN</b>
+<br/><b >RETURN</b>  against the Bill would be entertained till <b >45 DAYS</b> from the <b >BILL DATE</b> 
 </div>
 <br/>
+
+
 <br/><br/>
-<span style="float:left;font-size: 1.2em"><b>E. & O. E</b></span><span style="float:right;font-size: 1.2em"><b>Registered Pharmacist&nbsp;&nbsp;&nbsp;&nbsp;</b> </span>
+<span style="float:left;font-size: 1.2em"><b>E. & O. E</b></span><span style="float:right;font-size: 1.2em">FOR -<b>Jan Aushidhi Medicine Shop</b> </span>
 <br/>
-<span style="margin-left: 44em;font-size: 1.2em">Jan Aushidhi Store</span>
-<br/>
-<span style="margin-left: 45em;font-size: 1.2em">Regional Hospital Solan</span>
+<span style="margin-left: 48em;font-size: 1.2em">DDUZ</span>
 </div>
 </div>
 <!-- END PRINT DIV -->     

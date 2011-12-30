@@ -429,6 +429,9 @@ ISSUE={
 		{
 			jQuery('#addPatientIssue').dialog('open');
 
+		},
+		editBill : function(billId){
+			ACT.go("editBill.form?billId="+billId);
 		}
 };
 STOCKBALLANCE = {
@@ -450,4 +453,24 @@ STOCKBALLANCE = {
 			ACT.go(url);
 		}
 		
+};
+
+EDITBILL = {
+		refundQuantity : function(thiz, currentQty,tempQty)
+		{
+			var tmpRefundQuantity = jQuery(thiz).val();
+			if(tmpRefundQuantity > 0 && currentQty < tmpRefundQuantity){
+				alert('Return quantity must less than avaiable quantity');
+				 jQuery(thiz).val("");
+				 return false;
+			}
+			if(tempQty != tmpRefundQuantity){
+				var name = jQuery(thiz).attr("name");
+				ACT.go("addReturnDrug.form?name="+name+"&value="+tmpRefundQuantity)
+			}
+		},
+		finishEditBill : function()
+		{
+			jQuery('#alertEditBill').dialog('open');
+		}
 };

@@ -205,7 +205,7 @@ public class IssueDrugFormController {
 			}
 		}
 		StoreSingleton.getInstance().getHash().put(fowardParam, listExt);
-		JASStoreDrugIssue issueDrugPatient = (JASStoreDrugIssue )StoreSingleton.getInstance().getHash().get("issueDrug_"+userId);
+		//JASStoreDrugIssue issueDrugPatient = (JASStoreDrugIssue )StoreSingleton.getInstance().getHash().get("issueDrug_"+userId);
 		//model.addAttribute("issueDrugPatient", issueDrugPatient);
 		//model.addAttribute("listPatientDetail", list);
 	 return "redirect:/module/jas/issueDrugForm.form";

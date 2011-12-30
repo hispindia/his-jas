@@ -272,6 +272,81 @@ var CHECK =
 		
 		
 	},
+	formEditBill : function()
+	{
+		//jQuery("#drugName").autocomplete({source: 'autoCompleteDrugList.form', minLength: 3 });
+		
+		jQuery("input.changeQuantity").each(function(){
+		jQuery(this).keypress(function (e)
+		{
+		  //if the letter is not digit then display error and don't type anything
+		  if( e.which!=8 && e.which!=0 && (e.which<48 || e.which>57))
+		  {
+			//display error message
+			alert('This field required number!');
+			return false;
+		  }
+		});
+		});
+		
+		jQuery("#drugName").autocomplete('autoCompleteDrugList.form', {
+			minChars: 3 ,
+			delay:1000,
+			scroll: true}).result(function(event, item) {
+				jQuery("#divDrugAvailable").html("");
+				ISSUE.onBlur(item);
+			});
+		
+		var validator = jQuery("#formEditBill").validate(
+				{
+					event : "blur",
+					rules : 
+					{
+
+						"drugName" : { required : true},
+						"formulation" : { required : true}
+					
+					}
+				});
+		
+		jQuery('#alertEditBill').dialog({
+			autoOpen: false,
+			modal: true,
+			title: 'Finish edit bill',
+			width: '40%',
+			buttons: {
+				"Save": function() {
+
+					jQuery("#alertEditBill").html("<img src='../../moduleResources/jas/scripts/jquery/css/indicator.gif'  />");
+					var data = jQuery.ajax(
+							{
+								type:"POST"
+								,url: "finishEditBill.form"
+								,data: ({action: 0})	
+								,async: false
+								, cache : false
+							}).responseText;
+					if(data != null){
+						jQuery("#editBillList").html("");
+						jQuery( this ).dialog( "close" );
+						data=data.split(' ').join('');
+						ISSUE.printIssueDrug(data);
+						ACT.go("issueDrugList.form");
+					}else{
+						alert('Get error from server side please try late');
+						jQuery( this ).dialog( "close" );
+					}
+					
+				},
+				Cancel: function() {
+					jQuery( this ).dialog( "close" );
+				}
+			}
+		});
+		
+		
+		
+	},
 	receiptList : function()
 	{
 		
