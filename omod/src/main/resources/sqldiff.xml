@@ -76,7 +76,7 @@
 		</description>
 		<sql>
 			ALTER TABLE jas_store_drug_issue ADD update_times integer DEFAULT 0;
-			ALTER TABLE jas_store_drug_issue_detail ADD return_quantity integer DEFAULT 0,created_on datetime ;
+			ALTER TABLE jas_store_drug_issue_detail ADD return_quantity integer DEFAULT 0 ;
 			ALTER TABLE jas_store_drug_issue_detail ADD created_on datetime ;
 		</sql>
 	</diff>
