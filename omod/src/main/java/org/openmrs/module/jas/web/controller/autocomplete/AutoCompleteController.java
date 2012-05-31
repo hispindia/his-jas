@@ -29,6 +29,8 @@ import org.apache.commons.lang.StringUtils;
 import org.openmrs.Drug;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jas.JASService;
+import org.openmrs.module.jas.model.JASItem;
+import org.openmrs.module.jas.JASService;
 import org.openmrs.module.jas.model.JASDrug;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,6 +60,13 @@ public class AutoCompleteController {
 			return "/module/jas/autocomplete/autoCompleteDrugList";
 		}
 		
+		@RequestMapping("/module/jas/autoCompleteItemList.form")
+		public String item(@RequestParam(value="term",required=false) String name,@RequestParam(value="categoryId",required=false) Integer categoryId, Model model) {
+			JASService jasService = (JASService) Context.getService(JASService.class);
+			List<JASItem> items = jasService.findItem(categoryId, name);
+			model.addAttribute("items",items);
+			return "/module/jas/autocomplete/autoCompleteItemList";
+		}
 		@RequestMapping("/module/jas/checkSession.form")
 		public String checkSession(HttpServletRequest request,Model model) {
 			 if( Context.getAuthenticatedUser() != null &&  Context.getAuthenticatedUser().getId() != null){

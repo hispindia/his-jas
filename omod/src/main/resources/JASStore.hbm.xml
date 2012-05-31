@@ -16,5 +16,11 @@
 		<many-to-one name="role" column="role" class="org.openmrs.Role" />
 		<property name="retired" column="retired"  />
 		<property name="code" column="code"  />
+		<many-to-one name="parent" class="org.openmrs.module.jas.model.JASStore"
+	        column="parent_id"  lazy="false" />	 
+	    <set name="subStores"  table="jas_store" cascade="save-update,merge,evict" >
+	      <key column="parent_id"/>
+	      <one-to-many class="org.openmrs.module.jas.model.JASStore"/>
+	    </set> 
 	</class>
 </hibernate-mapping>

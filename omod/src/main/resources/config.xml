@@ -75,6 +75,19 @@
 		JASStoreDrugTransactionDetail.hbm.xml
 		JASStoreDrugIssue.hbm.xml
 		JASStoreDrugIssueDetail.hbm.xml
+		JASItem.hbm.xml
+		JASItemCategory.hbm.xml
+		JASItemSpecification.hbm.xml
+		JASItemSubCategory.hbm.xml
+		JASItemUnit.hbm.xml
+		JASStoreItem.hbm.xml
+		JASStoreItemTransaction.hbm.xml
+		JASStoreItemTransactionDetail.hbm.xml
+		JASStoreItemIndent.hbm.xml
+		JASStoreItemIndentDetail.hbm.xml
+		JASStoreItemAccount.hbm.xml
+		JASStoreItemAccountDetail.hbm.xml
+		
     </mappingFiles>
 </module>
 

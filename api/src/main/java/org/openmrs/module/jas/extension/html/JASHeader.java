@@ -32,13 +32,11 @@ import org.openmrs.module.web.extension.AdministrationSectionExt;
 import org.openmrs.module.web.extension.LinkExt;
 
 /**
- * This class defines the links that will appear on the administration page
- * 
- * This extension is enabled by defining (uncommenting) it in the 
- * /metadata/config.xml file. 
+ * This class defines the links that will appear on the administration page This extension is
+ * enabled by defining (uncommenting) it in the /metadata/config.xml file.
  */
 public class JASHeader extends LinkExt {
-
+	
 	/**
 	 * @see org.openmrs.module.web.extension.AdministrationSectionExt#getMediaType()
 	 */
@@ -53,7 +51,7 @@ public class JASHeader extends LinkExt {
 	public String getRequiredPrivilege() {
 		return JASConstants.STORE_VIEW;
 	}
-
+	
 	/**
 	 * @see org.openmrs.module.web.extension.LinkExt#getLabel()
 	 */
@@ -61,25 +59,27 @@ public class JASHeader extends LinkExt {
 	public String getLabel() {
 		try {
 			JASService jASService = (JASService) Context.getService(JASService.class);
-			JASStore store = jASService.getStoreByCollectionRole(new ArrayList<Role>(Context.getAuthenticatedUser().getAllRoles()));
-			if(store!=null && !store.getRetired()){
-				return store.getName();	
-			}else{
+			JASStore store = jASService.getStoreByCollectionRole(new ArrayList<Role>(Context.getAuthenticatedUser()
+			        .getAllRoles()));
+			if (store != null && !store.getRetired()) {
+				return store.getName();
+			} else {
 				return "";
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			
 		}
 		return "";
 	}
-
-	/** 
+	
+	/**
 	 * @see org.openmrs.module.web.extension.LinkExt#getUrl()
 	 */
 	@Override
 	public String getUrl() {
-		return "module/jas/main.form";	
+		return "module/jas/main.form";
 	}
 }

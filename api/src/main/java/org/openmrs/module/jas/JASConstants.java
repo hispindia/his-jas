@@ -20,20 +20,16 @@
 
 package org.openmrs.module.jas;
 
-
-
 /**
  *
  */
 public class JASConstants {
 	
-    //STORE
+	//STORE
 	public static final String STORE_VIEW = "manage JAS";
 	
 	public static final String TRUE = "t";
 	
 	public static final String FALSE = "f";
 	
-
 }
-
