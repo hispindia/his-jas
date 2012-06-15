@@ -74,7 +74,7 @@
 		</pluginManagement>
 		<plugins>
 			<plugin>
-				<groupId>org.motech.openmrs.plugin</groupId>
+				<groupId>org.openmrs.maven.plugins</groupId>
 				<artifactId>maven-openmrs-plugin</artifactId>
 				<extensions>true</extensions>
 				<configuration>
