@@ -58,7 +58,7 @@
 </table>
 <span class="boxHeader"><spring:message code="jas.item.list"/></span>
 <div class="box">
-<input type="button" class="ui-button ui-widget ui-state-default ui-corner-all" onclick="INVENTORY.checkValue();" value="<spring:message code='jas.deleteSelected'/>"/>
+<input type="button" class="ui-button ui-widget ui-state-default ui-corner-all" onclick="JAS.checkValue();" value="<spring:message code='jas.deleteSelected'/>"/>
 <c:choose>
 <c:when test="${not empty items}">
 <table cellpadding="5" cellspacing="0" width="100%">

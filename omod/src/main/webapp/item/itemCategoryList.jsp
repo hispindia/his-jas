@@ -41,7 +41,7 @@
 	<tr>
 		<td><spring:message code="general.name"/></td>
 		<td><input type="text" id="searchName" name="searchName" value="${searchName}" /></td>
-		<td><input type="button" class="ui-button ui-widget ui-state-default ui-corner-all" value="Search" onclick="INVENTORY.search('itemCategoryList.form','searchName');"/></td>
+		<td><input type="button" class="ui-button ui-widget ui-state-default ui-corner-all" value="Search" onclick="JAS.search('itemCategoryList.form','searchName');"/></td>
 	</tr>
 </table>
 
@@ -49,7 +49,7 @@
 <div class="box">
 <c:choose>
 <c:when test="${not empty itemCategories}">
-<input type="button" class="ui-button ui-widget ui-state-default ui-corner-all" onclick="INVENTORY.checkValue();" value="<spring:message code='jas.deleteSelected'/>"/>
+<input type="button" class="ui-button ui-widget ui-state-default ui-corner-all" onclick="JAS.checkValue();" value="<spring:message code='jas.deleteSelected'/>"/>
 <table cellpadding="5" cellspacing="0" width="100%">
 <tr>
 	<th>#</th>

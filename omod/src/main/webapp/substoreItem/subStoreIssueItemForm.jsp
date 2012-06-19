@@ -129,7 +129,7 @@
 	<tr class='${varStatus.index % 2 == 0 ? "oddRow" : "evenRow" } '>
 		<td><c:out value="${varStatus.count }"/></td>
 		<td>${issue.transactionDetail.item.subCategory.name} </td>	
-		<td><a href="#" title="Remove this" onclick="INVENTORY.removeObject('${varStatus.index}','1');">${issue.transactionDetail.item.name}</a></td>
+		<td><a href="#" title="Remove this" onclick="JAS.removeObject('${varStatus.index}','1');">${issue.transactionDetail.item.name}</a></td>
 		<td>${issue.transactionDetail.specification.name}</td>
 		<td>${issue.quantity}</td>
 		</tr>

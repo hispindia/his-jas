@@ -1,35 +1,35 @@
  <%--
  *  Copyright 2009 Society for Health Information Systems Programmes, India (HISP India)
  *
- *  This file is part of Inventory module.
+ *  This file is part of JAS module.
  *
- *  Inventory module is free software: you can redistribute it and/or modify
+ *  JAS module is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
 
- *  Inventory module is distributed in the hope that it will be useful,
+ *  JAS module is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with Inventory module.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with JAS module.  If not, see <http://www.gnu.org/licenses/>.
  *
 --%> 
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="/WEB-INF/template/headerMinimal.jsp" %>
 <%@ include file="../includes/js_css.jsp" %>
 <div class="box">
-<span class="boxHeader"><spring:message code="inventory.indentItem.detail"/></span>
+<span class="boxHeader"><spring:message code="jas.indentItem.detail"/></span>
 <table width="100%" cellpadding="5" cellspacing="0">
 	<tr align="center">
 	<th>#</th>
-	<th><spring:message code="inventory.indentItem.category"/></th>
-	<th><spring:message code="inventory.indentItem.name"/></th>
-	<th><spring:message code="inventory.indentItem.specification"/></th>
-	<th><spring:message code="inventory.indentItem.quantity"/></th>
-	<th><spring:message code="inventory.indentItem.transferQuantity"/></th>
+	<th><spring:message code="jas.indentItem.category"/></th>
+	<th><spring:message code="jas.indentItem.name"/></th>
+	<th><spring:message code="jas.indentItem.specification"/></th>
+	<th><spring:message code="jas.indentItem.quantity"/></th>
+	<th><spring:message code="jas.indentItem.transferQuantity"/></th>
 	</tr>
 	<c:choose>
 	<c:when test="${not empty listIndentDetail}">
@@ -47,7 +47,7 @@
 	</c:choose>	
 </table>
 </div>
-<input type="button" class="ui-button ui-widget ui-state-default ui-corner-all" value="<spring:message code="inventory.indentItem.print"/>" onClick="INDENT.printDiv();" />
+<input type="button" class="ui-button ui-widget ui-state-default ui-corner-all" value="<spring:message code="jas.indentItem.print"/>" onClick="INDENT.printDiv();" />
 <!-- PRINT DIV -->
 <div  id="printDiv" style="display: none; ">
 <div style="margin: 10px auto; width: 981px; font-size: 1.0em;font-family:'Dot Matrix Normal',Arial,Helvetica,sans-serif;">        		
@@ -62,11 +62,11 @@
 <table border="1" width="100%">
 	<tr>
 	<th>#</th>
-	<th><spring:message code="inventory.item.category"/></th>
-	<th><spring:message code="inventory.item.name"/></th>
-	<th><spring:message code="inventory.item.specification"/></th>
-	<th><spring:message code="inventory.indentItem.quantity"/></th>
-	<th><spring:message code="inventory.indentItem.transferQuantity"/></th>
+	<th><spring:message code="jas.item.category"/></th>
+	<th><spring:message code="jas.item.name"/></th>
+	<th><spring:message code="jas.item.specification"/></th>
+	<th><spring:message code="jas.indentItem.quantity"/></th>
+	<th><spring:message code="jas.indentItem.transferQuantity"/></th>
 	</tr>
 	<c:choose>
 	<c:when test="${not empty listIndentDetail}">
@@ -85,7 +85,7 @@
 </table>
 </center>
 <br/><br/><br/><br/><br/><br/>
-<span style="float:left;font-size: 1.5em">Signature of sub-store/ Stamp</span><span style="float:right;font-size: 1.5em">Signature of inventory clerk/ Stamp</span>
+<span style="float:left;font-size: 1.5em">Signature of sub-store/ Stamp</span><span style="float:right;font-size: 1.5em">Signature of jas clerk/ Stamp</span>
 <br/><br/><br/><br/><br/><br/>
 <span style="margin-left: 13em;font-size: 1.5em">Signature of Medical Superintendent/ Stamp</span>
 </div>
