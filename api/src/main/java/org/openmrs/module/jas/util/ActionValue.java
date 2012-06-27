@@ -21,6 +21,8 @@
 package org.openmrs.module.jas.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang.ArrayUtils;
@@ -38,12 +40,15 @@ public class ActionValue {
 	public static final int[] ITEM_ATTRIBUTE = { 1, 2 };
 	public static final String[] ITEM_ATTRIBUTE_NAMES = {"Essential Item", "Non Essential Item" };
 	
-	
+	//public static final List<Integer> INDENT_SUBSTORE = Collections.unmodifiableList(Arrays.asList(1,2,3,4,5,6));
 	public static final int[] INDENT_SUBSTORE = { 1, 2,3,4,5,6};
+
 	public static final String[] INDENT_SUBSTORE_NAMES = {"SAVE", "SENT","RECEIPT","REFUSE","DONE","MAIN-STORE REFUSE" };
 	
 	public static final int[] TRANSACTION = { 1, 2};
-	public static final String[] TRANSACTION_NAMES = {"RECEIPT", "ISSUE" };
+
+	public static final List< String> TRANSACTION_NAMES = Collections.unmodifiableList(Arrays.asList("RECEIPT", "ISSUE"));
+	//public static final String[] TRANSACTION_NAMES = {"RECEIPT", "ISSUE" };
 	
 	public static String getIndentSubStoreName(int pos) {
 		if(ArrayUtils.contains(INDENT_SUBSTORE, pos)) {
@@ -56,7 +61,8 @@ public class ActionValue {
 	public static List<Action> getListIndentSubStore() {
 		List<Action> rs = new ArrayList<Action>();
 		for (int i = 0; i < INDENT_SUBSTORE_NAMES.length; i++) {
-			rs.add(new Action(INDENT_SUBSTORE[i], INDENT_SUBSTORE_NAMES[i]));
+			
+			rs.add(new Action( INDENT_SUBSTORE[i], INDENT_SUBSTORE_NAMES[i]));
 		}
 		return rs;
 	}
@@ -134,7 +140,7 @@ public class ActionValue {
 	
 	public static String getTransactionName(int pos) {
 		if(ArrayUtils.contains(TRANSACTION, pos)) {
-			return TRANSACTION_NAMES[ArrayUtils.indexOf(TRANSACTION, pos)];
+			return TRANSACTION_NAMES.get(ArrayUtils.indexOf(TRANSACTION, pos));
 		}
 		
 		return " ";
@@ -142,8 +148,8 @@ public class ActionValue {
 	
 	public static List<Action> getListTypeTransaction() {
 		List<Action> rs = new ArrayList<Action>();
-		for (int i = 0; i < TRANSACTION_NAMES.length; i++) {
-			rs.add(new Action(TRANSACTION[i], TRANSACTION_NAMES[i]));
+		for (int i = 0; i < TRANSACTION_NAMES.size(); i++) {
+			rs.add(new Action(TRANSACTION[i], TRANSACTION_NAMES.get(i)));
 		}
 		return rs;
 	}
