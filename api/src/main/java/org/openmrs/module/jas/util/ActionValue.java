@@ -31,24 +31,24 @@ public class ActionValue {
 
 	
 
-	public static final int[] DRUG_ATTRIBUTE = { 1, 2,3 };
-	public static final String[] DRUG_ATTRIBUTE_NAMES = {"Vital", "Essential","Desired" };
+	public static  int[] DRUG_ATTRIBUTE = { 1, 2,3 };
+	public static  String[] DRUG_ATTRIBUTE_NAMES = {"Vital", "Essential","Desired" };
 	
-	public static final int[] IS_DRUG = { 1, 2 };
-	public static final String[] IS_DRUG_NAMES = {"Yes", "No" };
+	public static  int[] IS_DRUG = { 1, 2 };
+	public static  String[] IS_DRUG_NAMES = {"Yes", "No" };
 	
-	public static final int[] ITEM_ATTRIBUTE = { 1, 2 };
-	public static final String[] ITEM_ATTRIBUTE_NAMES = {"Essential Item", "Non Essential Item" };
+	public static  int[] ITEM_ATTRIBUTE = { 1, 2 };
+	public static  String[] ITEM_ATTRIBUTE_NAMES = {"Essential Item", "Non Essential Item" };
 	
 	//public static final List<Integer> INDENT_SUBSTORE = Collections.unmodifiableList(Arrays.asList(1,2,3,4,5,6));
-	public static final int[] INDENT_SUBSTORE = { 1, 2,3,4,5,6};
+	public static  int[] INDENT_SUBSTORE = { 1, 2,3,4,5,6};
 
-	public static final String[] INDENT_SUBSTORE_NAMES = {"SAVE", "SENT","RECEIPT","REFUSE","DONE","MAIN-STORE REFUSE" };
+	public static  String[] INDENT_SUBSTORE_NAMES = {"SAVE", "SENT","RECEIPT","REFUSE","DONE","MAIN-STORE REFUSE" };
 	
-	public static final int[] TRANSACTION = { 1, 2};
+	public static  int[] TRANSACTION = { 1, 2};
 
-	public static final List< String> TRANSACTION_NAMES = Collections.unmodifiableList(Arrays.asList("RECEIPT", "ISSUE"));
-	//public static final String[] TRANSACTION_NAMES = {"RECEIPT", "ISSUE" };
+	//public static final List< String> TRANSACTION_NAMES = Collections.unmodifiableList(Arrays.asList("RECEIPT", "ISSUE"));
+	public static String[] TRANSACTION_NAMES = {"RECEIPT", "ISSUE" };
 	
 	public static String getIndentSubStoreName(int pos) {
 		if(ArrayUtils.contains(INDENT_SUBSTORE, pos)) {
@@ -140,7 +140,7 @@ public class ActionValue {
 	
 	public static String getTransactionName(int pos) {
 		if(ArrayUtils.contains(TRANSACTION, pos)) {
-			return TRANSACTION_NAMES.get(ArrayUtils.indexOf(TRANSACTION, pos));
+			return TRANSACTION_NAMES[ArrayUtils.indexOf(TRANSACTION, pos)];
 		}
 		
 		return " ";
@@ -148,8 +148,8 @@ public class ActionValue {
 	
 	public static List<Action> getListTypeTransaction() {
 		List<Action> rs = new ArrayList<Action>();
-		for (int i = 0; i < TRANSACTION_NAMES.size(); i++) {
-			rs.add(new Action(TRANSACTION[i], TRANSACTION_NAMES.get(i)));
+		for (int i = 0; i < TRANSACTION_NAMES.length; i++) {
+			rs.add(new Action(TRANSACTION[i], TRANSACTION_NAMES[i]));
 		}
 		return rs;
 	}

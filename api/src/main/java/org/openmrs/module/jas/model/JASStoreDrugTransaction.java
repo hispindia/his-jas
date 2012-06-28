@@ -75,7 +75,7 @@ public class JASStoreDrugTransaction implements  Serializable {
 		return typeTransaction;
 	}
 	public String getTypeTransactionName() {
-		return typeTransaction == 1? ActionValue.TRANSACTION_NAMES.get(0) : ActionValue.TRANSACTION_NAMES.get(1);
+		return typeTransaction == 1? ActionValue.TRANSACTION_NAMES[0] : ActionValue.TRANSACTION_NAMES[1];
 	}
 	public void setTypeTransaction(int typeTransaction) {
 		this.typeTransaction = typeTransaction;
