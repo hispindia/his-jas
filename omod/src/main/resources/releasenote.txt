@@ -1,3 +1,16 @@
+1.4.2
+- Fixed high proprity Jenkins bugs
+	RC_REF_COMPARISON, Priority: High desc:Suspicious comparison of Integer references in org.openmrs.module.jas.web.controller.mainstoreItem.ProcessTransferItemFromGeneralStoreController.sendIndent(Integer, Model)
+				in methods : sendIndent() and onSubmit()
+	MS_MUTABLE_ARRAY, Priority: High org.openmrs.module.jas.util.ActionValue.TRANSACTION_NAMES is a mutable array
+				A final static field references an array and can be accessed by malicious code or by accident from another package. 
+				This code can freely modify the contents of the array.
+			
+- Resolved issues
+	Bug #78: manage receipt drug
+	Bug #176: JAS: role with log in
+	Support #121: grand total and total bill in patient bill
+
 1.4.1-SNAPSHOT
 - updated issue drug print for Solan
 - fixed bug checking session
