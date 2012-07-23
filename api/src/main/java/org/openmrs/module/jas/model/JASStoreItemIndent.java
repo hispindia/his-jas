@@ -23,8 +23,6 @@ package org.openmrs.module.jas.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.openmrs.module.jas.model.JASStore;
-import org.openmrs.module.jas.model.JASStoreItemTransaction;
 import org.openmrs.module.jas.util.ActionValue;
 
 public class JASStoreItemIndent implements Serializable {
