@@ -961,7 +961,7 @@ public class HibernateJASDAO implements JASDAO {
 		        .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
 		        .createAlias("transactionDetail.transaction", "transaction").createAlias("transactionDetail.drug", "drug")
 		        .createAlias("transactionDetail.formulation", "formulation");
-		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION[0]));
+		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION.get(0)));
 		if (storeId != null) {
 			criteria.add(Restrictions.eq("transaction.store.id", storeId));
 		}
@@ -1038,7 +1038,7 @@ public class HibernateJASDAO implements JASDAO {
 		        .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
 		        .createAlias("transactionDetail.transaction", "transaction").createAlias("transactionDetail.drug", "drug")
 		        .createAlias("transactionDetail.formulation", "formulation");
-		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION[0]));
+		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION.get(0)));
 		if (storeId != null) {
 			criteria.add(Restrictions.eq("transaction.store.id", storeId));
 		}
@@ -1108,7 +1108,7 @@ public class HibernateJASDAO implements JASDAO {
 		        .add(Restrictions.eq("transaction.store.id", storeId))
 		        .add(Restrictions.eq("transactionDetail.drug.id", drugId))
 		        .add(Restrictions.eq("transactionDetail.formulation.id", formulationId))
-		        .add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION[0]));
+		        .add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION.get(0)));
 		
 		String date = formatterExt.format(new Date());
 		String startFromDate = date + " 00:00:00";
@@ -1151,7 +1151,7 @@ public class HibernateJASDAO implements JASDAO {
 		        .createCriteria(JASStoreDrugTransactionDetail.class, "transactionDetail")
 		        .createAlias("transactionDetail.transaction", "transaction")
 		        .add(Restrictions.eq("transaction.store.id", storeId))
-		        .add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION[0]))
+		        .add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION.get(0)))
 		        .add(Restrictions.eq("transactionDetail.drug.id", drugId))
 		        .add(Restrictions.eq("transactionDetail.formulation.id", formulationId));
 		
@@ -1178,7 +1178,7 @@ public class HibernateJASDAO implements JASDAO {
 		if (drugs != null) {
 			criteria.createCriteria("transactionDetail.drug", Criteria.INNER_JOIN).add(Restrictions.in("id", drugs));
 		}
-		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION[0]));
+		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION.get(0)));
 		if (formulations != null) {
 			criteria.createCriteria("transactionDetail.formulation", Criteria.INNER_JOIN).add(
 			    Restrictions.in("id", formulations));
@@ -1796,7 +1796,7 @@ public class HibernateJASDAO implements JASDAO {
 		        .createCriteria(JASStoreItemTransactionDetail.class, "transactionDetail")
 		        .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
 		        .createAlias("transactionDetail.transaction", "transaction").createAlias("transactionDetail.item", "item");
-		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION[0]));
+		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION.get(0)));
 		if (storeId != null) {
 			criteria.add(Restrictions.eq("transaction.store.id", storeId));
 		}
@@ -1873,7 +1873,7 @@ public class HibernateJASDAO implements JASDAO {
 		        .createCriteria(JASStoreItemTransactionDetail.class, "transactionDetail")
 		        .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
 		        .createAlias("transactionDetail.transaction", "transaction").createAlias("transactionDetail.item", "item");
-		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION[0]));
+		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION.get(0)));
 		if (storeId != null) {
 			criteria.add(Restrictions.eq("transaction.store.id", storeId));
 		}
@@ -1943,7 +1943,7 @@ public class HibernateJASDAO implements JASDAO {
 		        .createAlias("transactionDetail.transaction", "transaction")
 		        .add(Restrictions.eq("transaction.store.id", storeId))
 		        .add(Restrictions.eq("transactionDetail.item.id", itemId))
-		        .add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION[0]));
+		        .add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION.get(0)));
 		if (specificationId != null && specificationId > 0) {
 			criteria.add(Restrictions.eq("transactionDetail.specification.id", specificationId));
 		} else {
@@ -1987,7 +1987,7 @@ public class HibernateJASDAO implements JASDAO {
 		        .createCriteria(JASStoreItemTransactionDetail.class, "transactionDetail")
 		        .createAlias("transactionDetail.transaction", "transaction")
 		        .add(Restrictions.eq("transaction.store.id", storeId))
-		        .add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION[0]))
+		        .add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION.get(0)))
 		        .add(Restrictions.eq("transactionDetail.item.id", itemId));
 		if (specificationId != null && specificationId > 0) {
 			criteria.add(Restrictions.eq("transactionDetail.specification.id", specificationId));
@@ -2017,7 +2017,7 @@ public class HibernateJASDAO implements JASDAO {
 		if (CollectionUtils.isNotEmpty(items)) {
 			criteria.createCriteria("transactionDetail.item", Criteria.INNER_JOIN).add(Restrictions.in("id", items));
 		}
-		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION[0]));
+		criteria.add(Restrictions.eq("transaction.typeTransaction", ActionValue.TRANSACTION.get(0)));
 		if (CollectionUtils.isNotEmpty(specifications)) {
 			criteria.createCriteria("transactionDetail.specification", Criteria.LEFT_JOIN).add(
 			    Restrictions.in("id", specifications));
@@ -2317,7 +2317,7 @@ public class HibernateJASDAO implements JASDAO {
 			
 			criteria.add(Restrictions.eq("indent.store.id", subStoreId));
 		}
-		criteria.add(Restrictions.ge("indent.subStoreStatus", ActionValue.INDENT_SUBSTORE[1]));
+		criteria.add(Restrictions.ge("indent.subStoreStatus", ActionValue.INDENT_SUBSTORE.get(1)));
 		if (status != null) {
 			criteria.add(Restrictions.eq("indent.mainStoreStatus", status));
 		}
@@ -2489,7 +2489,7 @@ public class HibernateJASDAO implements JASDAO {
 			
 			criteria.add(Restrictions.eq("indent.id", id));
 		}
-		criteria.add(Restrictions.ge("indent.subStoreStatus", ActionValue.INDENT_SUBSTORE[1]));
+		criteria.add(Restrictions.ge("indent.subStoreStatus", ActionValue.INDENT_SUBSTORE.get(1)));
 		if (status != null) {
 			criteria.add(Restrictions.eq("indent.mainStoreStatus", status));
 		}

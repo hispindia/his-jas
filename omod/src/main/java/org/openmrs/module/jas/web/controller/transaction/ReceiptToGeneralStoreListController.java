@@ -54,7 +54,7 @@ public class ReceiptToGeneralStoreListController {
 	 JASService jASService = (JASService) Context.getService(JASService.class);
 	JASStore store = jASService.getStoreByCollectionRole(new ArrayList<Role>(Context.getAuthenticatedUser().getAllRoles()));
 	 
-	 int total = jASService.countStoreDrugTransaction(ActionValue.TRANSACTION[0], store.getId(), receiptName, fromDate, toDate);
+	 int total = jASService.countStoreDrugTransaction(ActionValue.TRANSACTION.get(0), store.getId(), receiptName, fromDate, toDate);
 	 String temp = "";
 	 if(receiptName != null){	
 			if(StringUtils.isBlank(temp)){
@@ -81,7 +81,7 @@ public class ReceiptToGeneralStoreListController {
 		
 		
 		PagingUtil pagingUtil = new PagingUtil( RequestUtil.getCurrentLink(request)+temp , pageSize, currentPage, total );
-		List<JASStoreDrugTransaction> transactions = jASService.listStoreDrugTransaction(ActionValue.TRANSACTION[0], store.getId(), receiptName, fromDate, toDate,pagingUtil.getStartPos(), pagingUtil.getPageSize());
+		List<JASStoreDrugTransaction> transactions = jASService.listStoreDrugTransaction(ActionValue.TRANSACTION.get(0), store.getId(), receiptName, fromDate, toDate,pagingUtil.getStartPos(), pagingUtil.getPageSize());
 		model.put("receiptName", receiptName );
 		model.put("fromDate", fromDate );
 		model.put("toDate", toDate );

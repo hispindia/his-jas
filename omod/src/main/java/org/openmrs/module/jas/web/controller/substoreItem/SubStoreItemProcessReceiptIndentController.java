@@ -80,7 +80,7 @@ public class SubStoreItemProcessReceiptIndentController {
 		if ("1".equals(request.getParameter("refuse"))) {
 			if (indent != null) {
 				indent.setMainStoreStatus(ActionValue.INDENT_MAINSTORE[3]);
-				indent.setSubStoreStatus(ActionValue.INDENT_SUBSTORE[3]);
+				indent.setSubStoreStatus(ActionValue.INDENT_SUBSTORE.get(3));
 				jasService.saveStoreItemIndent(indent);
 				
 				for (JASStoreItemIndentDetail t : listIndentDetail) {
@@ -99,7 +99,7 @@ public class SubStoreItemProcessReceiptIndentController {
 				JASStoreItemTransaction transaction = new JASStoreItemTransaction();
 				transaction.setStore(subStore.getParent());
 				transaction.setDescription("REFUND ITEM BC SUBSTORE REFUSE " + DateUtils.getDDMMYYYY());
-				transaction.setTypeTransaction(ActionValue.TRANSACTION[0]);
+				transaction.setTypeTransaction(ActionValue.TRANSACTION.get(0));
 				transaction.setCreatedBy("System");
 				transaction.setCreatedOn(new Date());
 				transaction = jasService.saveStoreItemTransaction(transaction);
@@ -160,7 +160,7 @@ public class SubStoreItemProcessReceiptIndentController {
 		JASStoreItemTransaction transaction = new JASStoreItemTransaction();
 		transaction.setStore(subStore);
 		transaction.setDescription("RECEIPT " + DateUtils.getDDMMYYYY());
-		transaction.setTypeTransaction(ActionValue.TRANSACTION[0]);
+		transaction.setTypeTransaction(ActionValue.TRANSACTION.get(0));
 		transaction.setCreatedBy("System");
 		transaction.setCreatedOn(new Date());
 		transaction = jasService.saveStoreItemTransaction(transaction);
@@ -216,7 +216,7 @@ public class SubStoreItemProcessReceiptIndentController {
 			
 		}
 		//indent.setMainStoreStatus(ActionValue.INDENT_MAINSTORE[2]);
-		indent.setSubStoreStatus(ActionValue.INDENT_SUBSTORE[4]);
+		indent.setSubStoreStatus(ActionValue.INDENT_SUBSTORE.get(4));
 		jasService.saveStoreItemIndent(indent);
 		return "redirect:/module/jas/subStoreIndentItemList.form";
 		

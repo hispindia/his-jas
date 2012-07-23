@@ -232,7 +232,7 @@ public class AjaxController {
 				transaction.setDescription("ISSUE DRUG "
 						+ DateUtils.getDDMMYYYY());
 				transaction.setStore(store);
-				transaction.setTypeTransaction(ActionValue.TRANSACTION[1]);
+				transaction.setTypeTransaction(ActionValue.TRANSACTION.get(1));
 				transaction.setCreatedOn(date);
 				transaction.setCreatedBy(Context.getAuthenticatedUser()
 						.getGivenName());
@@ -687,7 +687,7 @@ public class AjaxController {
 				.getService(JASService.class);
 		JASStoreItemIndent indent = jasService.getStoreItemIndentById(indentId);
 		if (indent != null) {
-			indent.setSubStoreStatus(ActionValue.INDENT_SUBSTORE[1]);
+			indent.setSubStoreStatus(ActionValue.INDENT_SUBSTORE.get(1));
 			indent.setMainStoreStatus(ActionValue.INDENT_MAINSTORE[0]);
 			jasService.saveStoreItemIndent(indent);
 		}
@@ -818,7 +818,7 @@ public class AjaxController {
 			JASStoreItemTransaction transaction = new JASStoreItemTransaction();
 			transaction.setDescription("ISSUE ITEM " + DateUtils.getDDMMYYYY());
 			transaction.setStore(store);
-			transaction.setTypeTransaction(ActionValue.TRANSACTION[1]);
+			transaction.setTypeTransaction(ActionValue.TRANSACTION.get(1));
 			transaction.setCreatedOn(date);
 			transaction.setCreatedBy(Context.getAuthenticatedUser()
 					.getGivenName());

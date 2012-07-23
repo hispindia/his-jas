@@ -116,7 +116,7 @@ public class ProcessTransferItemFromGeneralStoreController {
 		if ("1".equals(request.getParameter("refuse"))) {
 			if (indent != null) {
 				indent.setMainStoreStatus(ActionValue.INDENT_MAINSTORE[1]);
-				indent.setSubStoreStatus(ActionValue.INDENT_SUBSTORE[5]);
+				indent.setSubStoreStatus(ActionValue.INDENT_SUBSTORE.get(5));
 				jasService.saveStoreItemIndent(indent);
 				
 				for (JASStoreItemIndentDetail t : listIndentDetail) {
@@ -211,7 +211,7 @@ public class ProcessTransferItemFromGeneralStoreController {
 		JASStoreItemTransaction transaction = new JASStoreItemTransaction();
 		transaction.setDescription("TRANSFER ITEM SYSTEM AUTO " + DateUtils.getDDMMYYYY());
 		transaction.setStore(mainStore);
-		transaction.setTypeTransaction(ActionValue.TRANSACTION[1]);
+		transaction.setTypeTransaction(ActionValue.TRANSACTION.get(1));
 		transaction.setCreatedOn(new Date());
 		transaction.setCreatedBy("System");
 		transaction = jasService.saveStoreItemTransaction(transaction);
@@ -349,7 +349,7 @@ public class ProcessTransferItemFromGeneralStoreController {
 		//System.out.println("den day roi");
 		//add issue transaction from general store 
 		indent.setMainStoreStatus(ActionValue.INDENT_MAINSTORE[2]);
-		indent.setSubStoreStatus(ActionValue.INDENT_SUBSTORE[2]);
+		indent.setSubStoreStatus(ActionValue.INDENT_SUBSTORE.get(2));
 		indent.setTransaction(transaction);
 		jasService.saveStoreItemIndent(indent);
 		return "redirect:/module/jas/transferItemFromGeneralStore.form";

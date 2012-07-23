@@ -71,7 +71,7 @@ public class AddDescriptionSlipController {
 		transaction.setDescription(description);
 		transaction.setCreatedOn(date);
 		transaction.setStore(store);
-		transaction.setTypeTransaction(ActionValue.TRANSACTION[0]);
+		transaction.setTypeTransaction(ActionValue.TRANSACTION.get(0));
 		transaction.setCreatedBy(Context.getAuthenticatedUser().getGivenName());
 		transaction = jASService.saveStoreDrugTransaction(transaction);
 		
