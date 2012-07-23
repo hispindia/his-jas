@@ -34,3 +34,4 @@
 <script type="text/javascript"  src="${pageContext.request.contextPath}/moduleResources/jas/scripts/paging.js" ></script>
 <script type="text/javascript"  src="${pageContext.request.contextPath}/moduleResources/jas/scripts/page-actions.js" ></script>
 <script type="text/javascript"  src="${pageContext.request.contextPath}/moduleResources/jas/scripts/page-utils.js" ></script>
+<script type="text/javascript"  src="${pageContext.request.contextPath}/moduleResources/jas/scripts/jquery/jquery.thickbox.js"></script>

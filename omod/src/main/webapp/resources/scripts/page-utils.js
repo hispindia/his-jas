@@ -79,6 +79,47 @@ JAS={
 		}
 };
 
+ITEM={
+		listSubCatByCat : function(thiz)
+		{
+			var x = jQuery(thiz).val();
+			if(x != null && x != '' ){
+				if(SESSION.checkSession()){
+					var data = jQuery.ajax(
+							{
+								type:"GET"
+								,url: "subCatByCat.form"
+								,data: ({categoryId :x})	
+								,async: false
+								, cache : false
+							}).responseText;
+					if(data != undefined  && data != null && data != ''){
+						jQuery("#divSubCat").html(data);
+					}else{
+						alert('Please refresh page!');
+					}
+				}
+			}
+		},
+		onChangeAttribute : function(thiz)
+		{
+			if(jQuery(thiz).val() == 1){
+				if(jQuery("#reorderQty").val()==0){
+					jQuery("#reorderQty").val("");
+				}
+				jQuery(".depentOnAttribute").show();
+			}else{
+				jQuery("#reorderQty").val(0);
+				jQuery(".depentOnAttribute").hide();
+			}
+		},
+		searchItem : function(thiz)
+		{
+			var itemName = jQuery("#searchName").val();
+			var categoryId = jQuery("#categoryId").val();
+			ACT.go("itemList.form?categoryId="+categoryId+"&searchName="+itemName);
+		}
+	};
 DRUG = {
 		onChangeAttribute : function(thiz)
 		{
@@ -188,6 +229,48 @@ RECEIPT={
 				}
 			}
 		},
+		onChangeCategoryItem : function(thiz)
+		{
+			var x = jQuery(thiz).val();
+			if(x != null && x != '' ){
+				if(SESSION.checkSession()){
+					var data = jQuery.ajax(
+							{
+								type:"GET"
+								,url: "itemBySubCategory.form"
+								,data: ({categoryId: x})	
+								,async: false
+								, cache : false
+							}).responseText;
+					if(data != undefined  && data != null && data != ''){
+						jQuery("#divItem").html(data);
+					}else{
+						alert('Please refresh page!');
+					}
+				}
+			}
+		},
+		onBlurItem : function(thiz)
+		{
+			var x = jQuery(thiz).val();
+			if(x != null && x != '' ){
+				if(SESSION.checkSession()){
+					var data = jQuery.ajax(
+							{
+								type:"GET"
+								,url: "specificationByItem.form"
+								,data: ({itemId: x})	
+								,async: false
+								, cache : false
+							}).responseText;
+					if(data != undefined  && data != null && data != ''){
+						jQuery("#divSpecification").html(data);
+					}else{
+						alert('Please refresh page!');
+					}
+				}
+			}
+		},
 		onBlur : function(thiz)
 		{
 			var x = jQuery(thiz).val();
@@ -209,7 +292,10 @@ RECEIPT={
 				}
 			}
 		},
-		
+		printDiv : function ()
+		{
+		  	jQuery("div#printDiv").printArea({mode:"popup",popClose:true,popTitle: "Support by HISP india(hispindia.org)"});
+		},
 		receiptSlip : function(action){
 				if(action == 0){
 					if(SESSION.checkSession()){
@@ -222,6 +308,18 @@ RECEIPT={
 						ACT.go("clearSlip.form?action="+action);
 					}
 				}
+		},
+		receiptSlipItem : function(action){
+			if(action == 0){
+				if(SESSION.checkSession()){
+					url = "itemAddDescriptionReceiptSlip.form?action="+action+"&keepThis=false&TB_iframe=true&height=200&width=450";
+					tb_show("Add description for this slip....",url,false);
+				}
+			}else{
+				if( confirm("Are you want to clear this slip?")){
+					ACT.go("itemClearSlip.form?action="+action);
+				}
+			}
 		}
 		
 };
