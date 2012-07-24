@@ -24,6 +24,7 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/moduleResources/jas/scripts/jquery/css/jquery.autocomplete.css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/moduleResources/jas/styles/paging.css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/moduleResources/jas/styles/common.css" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/moduleResources/jas/scripts/jquery/css/thickbox.css" />
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/moduleResources/jas/scripts/jquery/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/moduleResources/jas/scripts/jquery/jquery.metadata.min.js"></script>

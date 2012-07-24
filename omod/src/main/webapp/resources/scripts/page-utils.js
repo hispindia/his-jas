@@ -209,6 +209,13 @@ RECEIPT={
 				
 			}
 		},
+		detailReceiptItem : function(receiptId)
+		{
+			if(SESSION.checkSession()){
+				url = "itemReceiptDetail.form?receiptId="+receiptId+"&keepThis=false&TB_iframe=true&height=500&width=1000";
+				tb_show("Detail receipt item....",url,false);
+			}
+		},
 		printReceiptDrug : function(receiptId)
 		{
 			if(SESSION.checkSession()){
@@ -546,6 +553,222 @@ STOCKBALLANCE = {
 		goToTranser : function(url)
 		{
 			ACT.go(url);
+		}
+		
+};
+INDENT={
+		onChangeCategory : function(thiz)
+		{
+			var x = jQuery(thiz).val();
+			if(x != null && x != '' ){
+				if(SESSION.checkSession()){
+					var data = jQuery.ajax(
+							{
+								type:"GET"
+								,url: "drugByCategory.form"
+								,data: ({categoryId: x})	
+								,async: false
+								, cache : false
+							}).responseText;
+					if(data != undefined  && data != null && data != ''){
+						jQuery("#divDrug").html(data);
+						jQuery("#drugName").hide();
+						jQuery("#drugName").val("");
+					}else{
+						alert('Please refresh page!');
+					}
+				}
+			}
+		},
+		onChangeCategoryItem : function(thiz)
+		{
+			var x = jQuery(thiz).val();
+			if(x != null && x != '' ){
+				if(SESSION.checkSession()){
+					var data = jQuery.ajax(
+							{
+								type:"GET"
+								,url: "itemBySubCategory.form"
+								,data: ({categoryId: x})	
+								,async: false
+								, cache : false
+							}).responseText;
+					if(data != undefined  && data != null && data != ''){
+						jQuery("#divItem").html(data);
+					}else{
+						alert('Please refresh page!');
+					}
+				}
+			}
+		},
+		onBlur : function(thiz)
+		{
+			var x = jQuery(thiz).val();
+			if(x != null && x != '' ){
+				if(SESSION.checkSession()){
+					var data = jQuery.ajax(
+							{
+								type:"GET"
+								,url: "formulationByDrugName.form"
+								,data: ({drugName :x})	
+								,async: false
+								, cache : false
+							}).responseText;
+					if(data != undefined  && data != null && data != ''){
+						jQuery("#divFormulation").html(data);
+					}else{
+						alert('Please refresh page!');
+					}
+				}
+			}
+		},
+		onBlurDrug : function(thiz)
+		{
+			var x = jQuery(thiz).val();
+			if(x != null && x != '' ){
+				if(SESSION.checkSession()){
+					var data = jQuery.ajax(
+							{
+								type:"GET"
+								,url: "formulationByDrug.form"
+								,data: ({drugId :x})	
+								,async: false
+								, cache : false
+							}).responseText;
+					if(data != undefined  && data != null && data != ''){
+						jQuery("#divFormulation").html(data);
+					}else{
+						alert('Please refresh page!');
+					}
+				}
+			}
+		},
+		onBlurInput : function(thiz,value,mainStoreValue)
+		{
+			var x = jQuery(thiz).val();
+			if(x != null && x !=''){
+				if(parseInt(x) > parseInt(value)){
+					alert('Transfer quantity more than quantity indent');
+					jQuery(thiz).val('');
+					jQuery(thiz).focus();
+				}else if(parseInt(x) > parseInt(mainStoreValue)){
+					alert('Transfer quantity less than quantity on hand');
+					jQuery(thiz).val('');
+					jQuery(thiz).focus();
+				}
+			}
+		},
+		onBlurItem : function(thiz)
+		{
+			var x = jQuery(thiz).val();
+			if(x != null && x != '' ){
+				if(SESSION.checkSession()){
+					var data = jQuery.ajax(
+							{
+								type:"GET"
+								,url: "specificationByItem.form"
+								,data: ({itemId :x})	
+								,async: false
+								, cache : false
+							}).responseText;
+					if(data != undefined  && data != null && data != ''){
+						jQuery("#divSpecification").html(data);
+					}else{
+						alert('Please refresh page!');
+					}
+				}
+			}
+		},
+		printDiv : function ()
+		{
+		  	jQuery("div#printDiv").printArea({mode:"popup",popClose:true,popTitle: "Support by HISP india(hispindia.org)"});
+		},
+		processSlip : function(action){
+				if(action == 0){
+					if(SESSION.checkSession()){
+						url = "addNameIndentSlip.form?action="+action+"&keepThis=false&TB_iframe=true&height=200&width=450";
+						tb_show("Add name for indent slip....",url,false);
+					}
+				}else if(action == 2){
+					if(SESSION.checkSession()){
+						url = "addNameIndentSlip.form?send=1&action="+action+"&keepThis=false&TB_iframe=true&height=200&width=450";
+						tb_show("Add name for indent slip....",url,false);
+					}
+				}else{
+					if( confirm("Are you want to clear this?")){
+						ACT.go("clearSubStoreIndent.form?action="+action);
+					}
+				}
+		},
+		processSlipItem : function(action){
+			if(action == 0){
+				if(SESSION.checkSession()){
+					url = "itemAddNameIndentSlip.form?action="+action+"&keepThis=false&TB_iframe=true&height=200&width=450";
+					tb_show("Add name for indent slip....",url,false);
+				}
+			}else if(action == 2){
+				if(SESSION.checkSession()){
+					url = "itemAddNameIndentSlip.form?send=1&action="+action+"&keepThis=false&TB_iframe=true&height=200&width=450";
+					tb_show("Add name for indent slip....",url,false);
+				}
+			}else{
+				if( confirm("Are you want to clear this?")){
+					ACT.go("itemClearSubStoreIndent.form?action="+action);
+				}
+			}
+		},
+		detailDrugIndent : function(indentId)
+		{
+			if(SESSION.checkSession()){
+				url = "indentDrugDetail.form?indentId="+indentId+"&keepThis=false&TB_iframe=true&height=500&width=1000";
+				tb_show("Detail drug indent....",url,false);
+			}
+		},
+		detailItemIndent : function(indentId)
+		{
+			if(SESSION.checkSession()){
+				url = "indentItemDetail.form?indentId="+indentId+"&keepThis=false&TB_iframe=true&height=500&width=1000";
+				tb_show("Detail item indent....",url,false);
+			}
+		},
+		sendToMainStore : function(indentId)
+		{
+			ACT.go("sentDrugIndentToMainStore.form?indentId="+indentId);
+		},
+		sendToMainStoreItem : function(indentId)
+		{
+			ACT.go("sentItemIndentToMainStore.form?indentId="+indentId);
+		},
+		refuseIndentFromMainStore : function(thiz)
+		{
+			if(confirm("Are you sure this?")) {
+				jQuery('#tableIndent').remove();
+				jQuery("#refuse").val("1");
+				jQuery('#formMainStoreProcessIndent').submit()
+				}else{
+					return false;
+				}
+		},
+		
+		refuseIndentFromSubStore : function(thiz)
+		{
+			if(confirm("Are you sure this?")) {
+				jQuery('#tableIndent').remove();
+				jQuery("#refuse").val("1");
+				jQuery('#formSubStoreDrugProcessIndent').submit()
+				}else{
+					return false;
+				}
+		},
+		refuseIndentFromSubStoreItem : function(thiz)
+		{
+			if(confirm("Are you sure this?")) {
+				jQuery('#tableIndent').remove();
+				jQuery("#refuse").val("1");
+				jQuery('#formSubStoreItemProcessIndent').submit()
+				}else{
+					return false;
+				}
 		}
 		
 };
