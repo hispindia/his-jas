@@ -19,10 +19,9 @@
 --%> 
 <%@ include file="../includes/js_css.jsp" %>
 <br/>
-<b>Drug&nbsp;| <a href="#" onclick="ACT.go('itemViewStockBalance.form');">Item</a> </b>
-<br/><br/>
-<b><a href="#" onclick="ACT.go('storeList.form');"><spring:message code="jas.store.manage"/></a></b>&nbsp; | 
-<b><spring:message code="jas.drug.manage"/></b>
+<b><spring:message code="jas.store.manage"/></b>&nbsp; | 
+<b><a href="#" onclick="ACT.go('itemList.form');"><spring:message code="jas.item.manage"/></a></b>&nbsp;|
+<b><a href="#" onclick="ACT.go('drugList.form');"><spring:message code="jas.drug.manage"/></a></b>
 <br/>
 <br/>
 <b><a href="#" onclick="ACT.go('drugCategoryList.form');"><spring:message code="jas.drugCategory.manage"/></a></b>&nbsp; | 
