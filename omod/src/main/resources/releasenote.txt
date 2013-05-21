@@ -1,3 +1,7 @@
+1.4.3
+released by ghanshyam on 20-may-2013
+- #304 [JAS] Exception when viewing "Item"
+
 1.4.2
 - Fixed high proprity Jenkins bugs
 	RC_REF_COMPARISON, Priority: High desc:Suspicious comparison of Integer references in org.openmrs.module.jas.web.controller.mainstoreItem.ProcessTransferItemFromGeneralStoreController.sendIndent(Integer, Model)
